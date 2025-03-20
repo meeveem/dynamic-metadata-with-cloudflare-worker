@@ -1,13 +1,13 @@
 export const config = {
-  domainSource: "https://f69a71f6-9fd8-443b-a040-78beb5d404d4.weweb-preview.io", // Your WeWeb app preview link
+  domainSource: "https://54158bdd-39f4-434b-a793-0573aaee4bfd.weweb-preview.io", // Your WeWeb app preview link
   patterns: [
       {
-          pattern: "/event/[^/]+",
-          metaDataEndpoint: "https://xeo6-2sgh-ehgj.n7.xano.io/api:8wD10mRd/event/{id}/meta"
+          pattern: "/companies/jobs/[^/]+",
+          metaDataEndpoint: "https://xd1w-wj6z-napn.e2.xano.io/api:W5v_PiaD/metadata/jobs/{slug}"
       },
       {
-          pattern: "/team/profile/[^/]+",
-          metaDataEndpoint: "https://xeo6-2sgh-ehgj.n7.xano.io/api:LjwxezTv/team/profile/{profile_id}/meta"
+          pattern: "/find-a-startup/[^/]+",
+          metaDataEndpoint: "https://xd1w-wj6z-napn.e2.xano.io/api:W5v_PiaD/metadata/companies/{slug}"
       }
       // Add more patterns and their metadata endpoints as needed
   ]
