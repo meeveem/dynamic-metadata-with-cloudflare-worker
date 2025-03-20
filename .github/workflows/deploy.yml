@@ -17,14 +17,26 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Wrangler
-        run: npm install -g wrangler
+      - name: Install Wrangler (Stable Version)
+        run: npm install -g wrangler@3.21.0
 
       - name: Verify Wrangler Installation
         run: wrangler --version
 
+      - name: Configure Wrangler
+        run: |
+          echo "name = 'my-worker'" > wrangler.toml
+          echo "type = 'javascript'" >> wrangler.toml
+          echo "account_id = '${{ secrets.CF_ACCOUNT_ID }}'" >> wrangler.toml
+          echo "workers_dev = true" >> wrangler.toml
+          echo "[env.production]" >> wrangler.toml
+          echo "route = ''" >> wrangler.toml
+
+      - name: Authenticate Wrangler
+        run: echo '${{ secrets.CF_API_TOKEN }}' | wrangler login
+
       - name: Deploy Worker Manually
-        run: wrangler publish
+        run: wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
