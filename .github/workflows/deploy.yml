@@ -1,18 +1,18 @@
 name: Deploy Worker
-
 on:
   push:
   pull_request:
   repository_dispatch:
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4  # Update to v4
       - name: Build & Deploy Worker
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v3.4.1  # Use the latest v3 version
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          # Optional: Specify Wrangler version if needed
+          wranglerVersion: '4.2.0'
