@@ -128,7 +128,7 @@ export default {
 
     // If the URL does not match any patterns, fetch and return the original content
     console.log("Fetching original content for:", url.pathname);
-    const sourceUrl = new URL(${domainSource}${url.pathname}${url.search});
+    const sourceUrl = new URL(`${domainSource}${url.pathname}${url.search}`);
     const sourceRequest = new Request(sourceUrl, request);
     const sourceResponse = await fetch(sourceRequest);
 
